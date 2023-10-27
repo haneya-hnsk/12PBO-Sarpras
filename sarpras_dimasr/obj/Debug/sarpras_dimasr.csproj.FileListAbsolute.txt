@@ -1,0 +1,17 @@
+c:\users\negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\bin\Debug\sarpras_dimasr.exe.config
+c:\users\negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.csprojResolveAssemblyReference.cache
+c:\users\negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.Form1.resources
+c:\users\negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.Properties.Resources.resources
+c:\users\negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.csproj.GenerateResource.Cache
+C:\Users\Negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\bin\Debug\sarpras_dimasr.exe
+C:\Users\Negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\bin\Debug\sarpras_dimasr.pdb
+C:\Users\Negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\bin\Debug\MySql.Data.dll
+C:\Users\Negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\bin\Debug\MySql.Data.xml
+C:\Users\Negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.exe
+C:\Users\Negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.pdb
+C:\Users\Negurine\documents\visual studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.formBarang.resources
+C:\Users\Negurine\Documents\Visual Studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.formBarangMasuk.resources
+C:\Users\Negurine\Documents\Visual Studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.formMenu.resources
+C:\Users\Negurine\Documents\Visual Studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.formBarangKeluar.resources
+C:\Users\Negurine\Documents\Visual Studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.formPinjamBarang.resources
+C:\Users\Negurine\Documents\Visual Studio 2015\Projects\sarpras_dimasr\sarpras_dimasr\obj\Debug\sarpras_dimasr.formSuplier.resources
