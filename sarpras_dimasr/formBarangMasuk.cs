@@ -49,9 +49,10 @@ namespace sarpras_dimasr
         private void button1_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
-            MySqlCommand cmd = new MySqlCommand("insert into  barang_masuk values (@id, @nb, @jb, @date, @ids)", conn);
+            MySqlCommand cmd = new MySqlCommand("insert into  barang_masuk values (@idbm,@id, @nb, @jb, @date, @ids)", conn);
             cmd.Parameters.AddWithValue("@id", int.Parse(idBarang.Text));
             cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
+            cmd.Parameters.AddWithValue("@idbm", idbm.Text);
             cmd.Parameters.AddWithValue("@jb", jumlahBarang.Text);
             cmd.Parameters.AddWithValue("@date", tanggalMasuk.Value);
             cmd.Parameters.AddWithValue("@ids", idSuplier.Text);
@@ -63,24 +64,35 @@ namespace sarpras_dimasr
         private void button2_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
-            MySqlCommand cmd = new MySqlCommand("update set nama_barang=@nb, jumlah_barang=@jb, tanggal_masuk=@date, id_suplier=@ids where id_bs=@idbs ", conn);
+            MySqlCommand cmd = new MySqlCommand("update set id_barang=@id nama_barang=@nb, jumlah_barang=@jb, tanggal_masuk=@date, id_suplier=@ids where id_bm=@idbm ", conn);
+
             cmd.Parameters.AddWithValue("@id", int.Parse(idBarang.Text));
             cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
-            cmd.Parameters.AddWithValue("@idbs", idbs.Text);
+            cmd.Parameters.AddWithValue("@idbm", idbm.Text);
             cmd.Parameters.AddWithValue("@jb", jumlahBarang.Text);
             cmd.Parameters.AddWithValue("@date", tanggalMasuk.Value);
             cmd.Parameters.AddWithValue("@ids", idSuplier.Text);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Data  berhasil Diubah");
             tampildata();
+
+           
+
         }
 
+       public void stokdata() {
+            MySqlConnection conn = koneksi.mysqlkoneksi();
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM stok", conn);
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
             MySqlCommand cmd = new MySqlCommand("delete from barang_masuk where id_bs=@idbs", conn);
           
-            cmd.Parameters.AddWithValue("@idbs", idbs.Text);
+            cmd.Parameters.AddWithValue("@idbs", idbm.Text);
             
             cmd.ExecuteNonQuery();
             MessageBox.Show("Data  berhasil Dihapus");
@@ -106,6 +118,19 @@ namespace sarpras_dimasr
                 tampildata();
             }
             else { tampildata(); }
+        }
+
+        private void barang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridViewRow row = barang.Rows[e.RowIndex];
+            idbm.Text = row.Cells[0].ToString();
+            idBarang.Text = row.Cells[1].ToString();
+            namaBarang.Text = row.Cells[2].ToString();
+            jumlahBarang.Text = row.Cells[4].ToString();
+            tanggalMasuk.Value = Convert.ToDateTime(row.Cells[3]);
+            
+            idSuplier.Text = row.Cells[5].ToString();
         }
     }
 }

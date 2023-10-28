@@ -29,25 +29,26 @@
         private void InitializeComponent()
         {
             this.barang = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
-            this.tc = new System.Windows.Forms.TextBox();
             this.btnKeluar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.cmbidb = new System.Windows.Forms.ComboBox();
-            this.date = new System.Windows.Forms.DateTimePicker();
+            this.idBarang = new System.Windows.Forms.ComboBox();
+            this.tanggalKeluar = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtJmlbrg = new System.Windows.Forms.TextBox();
+            this.jumlahKeluar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tnb = new System.Windows.Forms.TextBox();
-            this.lk = new System.Windows.Forms.TextBox();
+            this.namaBarang = new System.Windows.Forms.TextBox();
+            this.lokasi = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.pn = new System.Windows.Forms.TextBox();
+            this.penerima = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.tc = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.barang)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barang
@@ -58,24 +59,7 @@
             this.barang.RowTemplate.Height = 28;
             this.barang.Size = new System.Drawing.Size(483, 250);
             this.barang.TabIndex = 70;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(865, 342);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(112, 46);
-            this.button4.TabIndex = 69;
-            this.button4.Text = "Cari";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // tc
-            // 
-            this.tc.Location = new System.Drawing.Point(595, 352);
-            this.tc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tc.Name = "tc";
-            this.tc.Size = new System.Drawing.Size(262, 26);
-            this.tc.TabIndex = 68;
+            this.barang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.barang_CellClick);
             // 
             // btnKeluar
             // 
@@ -86,6 +70,7 @@
             this.btnKeluar.TabIndex = 67;
             this.btnKeluar.Text = "Keluar";
             this.btnKeluar.UseVisualStyleBackColor = true;
+            this.btnKeluar.Click += new System.EventHandler(this.btnKeluar_Click);
             // 
             // button3
             // 
@@ -121,20 +106,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cmbidb
+            // idBarang
             // 
-            this.cmbidb.FormattingEnabled = true;
-            this.cmbidb.Location = new System.Drawing.Point(166, 33);
-            this.cmbidb.Name = "cmbidb";
-            this.cmbidb.Size = new System.Drawing.Size(121, 28);
-            this.cmbidb.TabIndex = 64;
+            this.idBarang.FormattingEnabled = true;
+            this.idBarang.Location = new System.Drawing.Point(166, 33);
+            this.idBarang.Name = "idBarang";
+            this.idBarang.Size = new System.Drawing.Size(121, 28);
+            this.idBarang.TabIndex = 64;
             // 
-            // date
+            // tanggalKeluar
             // 
-            this.date.Location = new System.Drawing.Point(166, 163);
-            this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(269, 26);
-            this.date.TabIndex = 63;
+            this.tanggalKeluar.Location = new System.Drawing.Point(166, 163);
+            this.tanggalKeluar.Name = "tanggalKeluar";
+            this.tanggalKeluar.Size = new System.Drawing.Size(269, 26);
+            this.tanggalKeluar.TabIndex = 63;
             // 
             // label3
             // 
@@ -146,13 +131,13 @@
             this.label3.TabIndex = 62;
             this.label3.Text = "Tanggal Keluar";
             // 
-            // txtJmlbrg
+            // jumlahKeluar
             // 
-            this.txtJmlbrg.Location = new System.Drawing.Point(166, 124);
-            this.txtJmlbrg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtJmlbrg.Name = "txtJmlbrg";
-            this.txtJmlbrg.Size = new System.Drawing.Size(146, 26);
-            this.txtJmlbrg.TabIndex = 61;
+            this.jumlahKeluar.Location = new System.Drawing.Point(166, 124);
+            this.jumlahKeluar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.jumlahKeluar.Name = "jumlahKeluar";
+            this.jumlahKeluar.Size = new System.Drawing.Size(146, 26);
+            this.jumlahKeluar.TabIndex = 61;
             // 
             // label7
             // 
@@ -184,21 +169,21 @@
             this.label1.TabIndex = 56;
             this.label1.Text = "ID Barang";
             // 
-            // tnb
+            // namaBarang
             // 
-            this.tnb.Location = new System.Drawing.Point(166, 78);
-            this.tnb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tnb.Name = "tnb";
-            this.tnb.Size = new System.Drawing.Size(296, 26);
-            this.tnb.TabIndex = 55;
+            this.namaBarang.Location = new System.Drawing.Point(166, 78);
+            this.namaBarang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.namaBarang.Name = "namaBarang";
+            this.namaBarang.Size = new System.Drawing.Size(296, 26);
+            this.namaBarang.TabIndex = 55;
             // 
-            // lk
+            // lokasi
             // 
-            this.lk.Location = new System.Drawing.Point(165, 198);
-            this.lk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.lk.Name = "lk";
-            this.lk.Size = new System.Drawing.Size(146, 26);
-            this.lk.TabIndex = 72;
+            this.lokasi.Location = new System.Drawing.Point(165, 198);
+            this.lokasi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lokasi.Name = "lokasi";
+            this.lokasi.Size = new System.Drawing.Size(146, 26);
+            this.lokasi.TabIndex = 72;
             // 
             // label5
             // 
@@ -210,13 +195,13 @@
             this.label5.TabIndex = 71;
             this.label5.Text = "lokasi";
             // 
-            // pn
+            // penerima
             // 
-            this.pn.Location = new System.Drawing.Point(166, 234);
-            this.pn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pn.Name = "pn";
-            this.pn.Size = new System.Drawing.Size(146, 26);
-            this.pn.TabIndex = 74;
+            this.penerima.Location = new System.Drawing.Point(166, 234);
+            this.penerima.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.penerima.Name = "penerima";
+            this.penerima.Size = new System.Drawing.Size(146, 26);
+            this.penerima.TabIndex = 74;
             // 
             // label6
             // 
@@ -228,33 +213,54 @@
             this.label6.TabIndex = 73;
             this.label6.Text = "Penerima";
             // 
+            // tc
+            // 
+            this.tc.Location = new System.Drawing.Point(33, 28);
+            this.tc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tc.Name = "tc";
+            this.tc.Size = new System.Drawing.Size(262, 26);
+            this.tc.TabIndex = 51;
+            this.tc.TextChanged += new System.EventHandler(this.tc_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tc);
+            this.groupBox1.Location = new System.Drawing.Point(608, 325);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(329, 69);
+            this.groupBox1.TabIndex = 75;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cari";
+            // 
             // formBarangKeluar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 425);
-            this.Controls.Add(this.pn);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.penerima);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lk);
+            this.Controls.Add(this.lokasi);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.barang);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.tc);
             this.Controls.Add(this.btnKeluar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.cmbidb);
-            this.Controls.Add(this.date);
+            this.Controls.Add(this.idBarang);
+            this.Controls.Add(this.tanggalKeluar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtJmlbrg);
+            this.Controls.Add(this.jumlahKeluar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tnb);
+            this.Controls.Add(this.namaBarang);
             this.Name = "formBarangKeluar";
             this.Text = "formBarangKeluar";
+            this.Load += new System.EventHandler(this.formBarangKeluar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barang)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,23 +269,23 @@
         #endregion
 
         private System.Windows.Forms.DataGridView barang;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox tc;
         private System.Windows.Forms.Button btnKeluar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cmbidb;
-        private System.Windows.Forms.DateTimePicker date;
+        private System.Windows.Forms.ComboBox idBarang;
+        private System.Windows.Forms.DateTimePicker tanggalKeluar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtJmlbrg;
+        private System.Windows.Forms.TextBox jumlahKeluar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tnb;
-        private System.Windows.Forms.TextBox lk;
+        private System.Windows.Forms.TextBox namaBarang;
+        private System.Windows.Forms.TextBox lokasi;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox pn;
+        private System.Windows.Forms.TextBox penerima;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tc;
     }
 }

@@ -45,8 +45,7 @@
             this.btnKeluar = new System.Windows.Forms.Button();
             this.barang = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.idbs = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.idbm = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barang)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -202,6 +201,7 @@
             this.barang.RowTemplate.Height = 28;
             this.barang.Size = new System.Drawing.Size(483, 250);
             this.barang.TabIndex = 53;
+            this.barang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.barang_CellClick);
             // 
             // groupBox1
             // 
@@ -213,31 +213,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cari";
             // 
-            // idbs
+            // idbm
             // 
-            this.idbs.Location = new System.Drawing.Point(182, 39);
-            this.idbs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.idbs.Name = "idbs";
-            this.idbs.Size = new System.Drawing.Size(146, 26);
-            this.idbs.TabIndex = 56;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 42);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 20);
-            this.label5.TabIndex = 55;
-            this.label5.Text = "Jumlah Barang";
+            this.idbm.AutoSize = true;
+            this.idbm.Location = new System.Drawing.Point(362, 39);
+            this.idbm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.idbm.Name = "idbm";
+            this.idbm.Size = new System.Drawing.Size(43, 20);
+            this.idbm.TabIndex = 57;
+            this.idbm.Text = "idbm";
+            this.idbm.Visible = false;
             // 
             // formBarangMasuk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 409);
-            this.Controls.Add(this.idbs);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.idbm);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.barang);
             this.Controls.Add(this.btnKeluar);
@@ -284,7 +276,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox idbs;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label idbm;
     }
 }

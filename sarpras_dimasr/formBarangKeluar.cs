@@ -38,12 +38,12 @@ namespace sarpras_dimasr
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
             MySqlCommand cmd = new MySqlCommand("insert into  barang_keluar values (@id, @nb, @jb, @date, @lks)", conn);
-            cmd.Parameters.AddWithValue("@id", int.Parse(cmbidb.Text));
-            cmd.Parameters.AddWithValue("@nb", tnb.Text);
-            cmd.Parameters.AddWithValue("@date", date.Value);
-            cmd.Parameters.AddWithValue("@jb", txtJmlbrg.Text);
-            cmd.Parameters.AddWithValue("@lks", lk.Text);
-            cmd.Parameters.AddWithValue("@pn", pn.Text);
+            cmd.Parameters.AddWithValue("@id", int.Parse(idBarang.Text));
+            cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
+            cmd.Parameters.AddWithValue("@date", tanggalKeluar.Value);
+            cmd.Parameters.AddWithValue("@jb", jumlahKeluar.Text);
+            cmd.Parameters.AddWithValue("@lks", lokasi.Text);
+            cmd.Parameters.AddWithValue("@pn", penerima.Text);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Data Barang berhasil Disimpan");
             tampildata();
@@ -53,15 +53,53 @@ namespace sarpras_dimasr
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
             MySqlCommand cmd = new MySqlCommand("insert into  barang_keluar values (@id, @nb, @jb, @date, @lks)", conn);
-            cmd.Parameters.AddWithValue("@id", int.Parse(cmbidb.Text));
-            cmd.Parameters.AddWithValue("@nb", tnb.Text);
-            cmd.Parameters.AddWithValue("@date", date.Value);
-            cmd.Parameters.AddWithValue("@jb", txtJmlbrg.Text);
-            cmd.Parameters.AddWithValue("@lks", lk.Text);
-            cmd.Parameters.AddWithValue("@pn", pn.Text);
+            cmd.Parameters.AddWithValue("@id", int.Parse(idBarang.Text));
+            cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
+            cmd.Parameters.AddWithValue("@date", tanggalKeluar.Value);
+            cmd.Parameters.AddWithValue("@jb", jumlahKeluar.Text);
+            cmd.Parameters.AddWithValue("@lks", lokasi.Text);
+            cmd.Parameters.AddWithValue("@pn", penerima.Text);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Data Barang berhasil Disimpan");
             tampildata();
+        }
+
+        private void btnKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tc_TextChanged(object sender, EventArgs e)
+        {
+            if (tc.Text != "")
+            {
+                MySqlConnection conn = koneksi.mysqlkoneksi();
+                MySqlCommand cmd = new MySqlCommand("select from barang_keluar where id_bk like @cari or id_barang like @cari or nama_barang like @cari ", conn);
+
+                cmd.Parameters.AddWithValue("@cari", "%" + tc.Text + "%");
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data  berhasil Dihapus");
+                tampildata();
+            }
+            else { tampildata(); }
+        }
+
+        private void formBarangKeluar_Load(object sender, EventArgs e)
+        {
+            tampildata();
+        }
+
+        private void barang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = barang.Rows[e.RowIndex];
+            idBarang.Text = row.Cells[0].ToString();
+            namaBarang.Text = row.Cells[1].ToString();
+            jumlahKeluar.Text = row.Cells[2].ToString();
+            tanggalKeluar.Value = Convert.ToDateTime(row.Cells[3].ToString());
+            lokasi.Text = row.Cells[4].ToString();
+            penerima.Text = row.Cells[5].ToString();
+                    
         }
     }
 }
