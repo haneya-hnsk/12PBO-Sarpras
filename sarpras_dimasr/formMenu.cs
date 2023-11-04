@@ -78,5 +78,10 @@ namespace sarpras_dimasr
             formBarangKeluar fs = new formBarangKeluar();
             fs.Show();
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

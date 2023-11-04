@@ -49,15 +49,43 @@ namespace sarpras_dimasr
         private void button1_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
-            MySqlCommand cmd = new MySqlCommand("insert into  barang_masuk values (@idbm,@id, @nb, @jb, @date, @ids)", conn);
-            cmd.Parameters.AddWithValue("@id", int.Parse(idBarang.Text));
+            MySqlCommand cmd = new MySqlCommand("insert into  barang_masuk values (@idbm,@id, @nb,  @date,@jb, @ids)", conn);
+            cmd.Parameters.AddWithValue("@id", idBarang.Text);
             cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
             cmd.Parameters.AddWithValue("@idbm", idbm.Text);
             cmd.Parameters.AddWithValue("@jb", jumlahBarang.Text);
-            cmd.Parameters.AddWithValue("@date", tanggalMasuk.Value);
+            cmd.Parameters.AddWithValue("@date", Convert.ToDateTime(tanggalMasuk.Value));
             cmd.Parameters.AddWithValue("@ids", idSuplier.Text);
             cmd.ExecuteNonQuery();
+
+
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM barang Where id_barang=@id", conn);
+            cmd1.Parameters.AddWithValue("@id", idBarang.Text);
+
+            MySqlDataAdapter da1 = new MySqlDataAdapter(cmd1);
+            DataTable dt1 = new DataTable();
+            da1.Fill(dt1);
+            if (dt1.Rows.Count > 0)
+            {
+                int database = Convert.ToInt32(dt1.Rows[0]["jumlah_barang"]);
+                int lokal = Convert.ToInt32(jumlahBarang.Text);
+
+                int total = database + lokal;
+                MySqlCommand cmd2 = new MySqlCommand("update barang set jumlah_barang = @total where id_barang = @id ", conn);
+
+                cmd2.Parameters.AddWithValue("@id", idBarang.Text);
+                cmd2.Parameters.AddWithValue("@total", total);
+                cmd2.ExecuteNonQuery();
+
+
+
+            }
+
+
             MessageBox.Show("Data Barang berhasil Disimpan");
+
+
+
             tampildata();
         }
 
@@ -66,7 +94,7 @@ namespace sarpras_dimasr
             MySqlConnection conn = koneksi.mysqlkoneksi();
             MySqlCommand cmd = new MySqlCommand("update set id_barang=@id nama_barang=@nb, jumlah_barang=@jb, tanggal_masuk=@date, id_suplier=@ids where id_bm=@idbm ", conn);
 
-            cmd.Parameters.AddWithValue("@id", int.Parse(idBarang.Text));
+            cmd.Parameters.AddWithValue("@id", idBarang.Text);
             cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
             cmd.Parameters.AddWithValue("@idbm", idbm.Text);
             cmd.Parameters.AddWithValue("@jb", jumlahBarang.Text);
@@ -128,9 +156,30 @@ namespace sarpras_dimasr
             idBarang.Text = row.Cells[1].ToString();
             namaBarang.Text = row.Cells[2].ToString();
             jumlahBarang.Text = row.Cells[4].ToString();
-            tanggalMasuk.Value = Convert.ToDateTime(row.Cells[3]);
+            tanggalMasuk.Value = Convert.ToDateTime(row.Cells[3].Value);
             
             idSuplier.Text = row.Cells[5].ToString();
+        }
+
+        private void idBarang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (idBarang.SelectedIndex >= 0)
+            {
+
+                MySqlConnection conn = koneksi.mysqlkoneksi();
+                MySqlCommand cmd = new MySqlCommand("SELECT * from barang where id_barang = @nama", conn);
+                cmd.Parameters.AddWithValue("@nama", idBarang.Text);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                namaBarang.Text = dt.Rows[0]["nama_barang"].ToString();
+            }
+            else { }
+        }
+
+        private void btnKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

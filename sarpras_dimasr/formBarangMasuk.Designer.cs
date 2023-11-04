@@ -120,6 +120,7 @@
             this.idBarang.Name = "idBarang";
             this.idBarang.Size = new System.Drawing.Size(121, 28);
             this.idBarang.TabIndex = 47;
+            this.idBarang.SelectedIndexChanged += new System.EventHandler(this.idBarang_SelectedIndexChanged);
             // 
             // idSuplier
             // 
@@ -192,6 +193,7 @@
             this.btnKeluar.TabIndex = 50;
             this.btnKeluar.Text = "Keluar";
             this.btnKeluar.UseVisualStyleBackColor = true;
+            this.btnKeluar.Click += new System.EventHandler(this.btnKeluar_Click);
             // 
             // barang
             // 

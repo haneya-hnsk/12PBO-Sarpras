@@ -144,11 +144,12 @@ namespace sarpras_dimasr
             DataGridViewRow Row = barang.Rows[e.RowIndex];
             idPinjam.Text = Row.Cells[0].Value.ToString();
             peminjam.Text = Row.Cells[1].Value.ToString();
-            tanggalPinjam.Text = Row.Cells[2].Value.ToString();
-            namaBarang.Text = Row.Cells[3].Value.ToString();
-            idBarang.Text = Row.Cells[4].Value.ToString();
+
+            tanggalPinjam.Value = Convert.ToDateTime(Row.Cells[2].Value);
+            namaBarang.Text = Row.Cells[4].Value.ToString();
+            idBarang.Text = Row.Cells[3].Value.ToString();
             jumlahBarang.Text = Row.Cells[5].Value.ToString();
-            tanggalKembali.Text = Row.Cells[6].Value.ToString();
+            tanggalKembali.Value = Convert.ToDateTime(Row.Cells[6].Value);
             kondisi.Text = Row.Cells[7].Value.ToString();
         }
 
@@ -158,12 +159,12 @@ namespace sarpras_dimasr
             {
 
                 MySqlConnection conn = koneksi.mysqlkoneksi();
-                MySqlCommand cmd = new MySqlCommand("SELECT * from barang where nama_barang = @nama", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * from barang where id_barang = @nama", conn);
                 cmd.Parameters.AddWithValue("@nama", idBarang.Text);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                namaBarang.Text = dt.Rows[0]["id_barang"].ToString();
+                namaBarang.Text = dt.Rows[0]["nama_barang"].ToString();
             }
             else { }
         }

@@ -113,6 +113,7 @@
             this.idBarang.Name = "idBarang";
             this.idBarang.Size = new System.Drawing.Size(121, 28);
             this.idBarang.TabIndex = 64;
+            this.idBarang.SelectedIndexChanged += new System.EventHandler(this.idBarang_SelectedIndexChanged);
             // 
             // tanggalKeluar
             // 
