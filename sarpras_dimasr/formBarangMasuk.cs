@@ -92,13 +92,13 @@ namespace sarpras_dimasr
         private void button2_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
-            MySqlCommand cmd = new MySqlCommand("update set id_barang=@id nama_barang=@nb, jumlah_barang=@jb, tanggal_masuk=@date, id_suplier=@ids where id_bm=@idbm ", conn);
+            MySqlCommand cmd = new MySqlCommand("update barang_masuk set id_barang=@id, nama_barang=@nb, jml_masuk=@jb, tgl_masuk=@date, id_suplier=@ids where id_bm=@idbm ", conn);
 
             cmd.Parameters.AddWithValue("@id", idBarang.Text);
-            cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
             cmd.Parameters.AddWithValue("@idbm", idbm.Text);
+            cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
+            cmd.Parameters.AddWithValue("@date", Convert.ToDateTime(tanggalMasuk.Value));
             cmd.Parameters.AddWithValue("@jb", jumlahBarang.Text);
-            cmd.Parameters.AddWithValue("@date", tanggalMasuk.Value);
             cmd.Parameters.AddWithValue("@ids", idSuplier.Text);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Data  berhasil Diubah");
@@ -118,7 +118,7 @@ namespace sarpras_dimasr
         private void button3_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
-            MySqlCommand cmd = new MySqlCommand("delete from barang_masuk where id_bs=@idbs", conn);
+            MySqlCommand cmd = new MySqlCommand("delete from barang_masuk where id_bm=@idbs", conn);
           
             cmd.Parameters.AddWithValue("@idbs", idbm.Text);
             
@@ -152,13 +152,13 @@ namespace sarpras_dimasr
         {
 
             DataGridViewRow row = barang.Rows[e.RowIndex];
-            idbm.Text = row.Cells[0].ToString();
-            idBarang.Text = row.Cells[1].ToString();
-            namaBarang.Text = row.Cells[2].ToString();
-            jumlahBarang.Text = row.Cells[4].ToString();
+            idbm.Text = row.Cells[0].Value.ToString();
+            idBarang.Text = row.Cells[1].Value.ToString();
+            namaBarang.Text = row.Cells[2].Value.ToString();
+            jumlahBarang.Text = row.Cells[4].Value.ToString();
             tanggalMasuk.Value = Convert.ToDateTime(row.Cells[3].Value);
             
-            idSuplier.Text = row.Cells[5].ToString();
+            idSuplier.Text = row.Cells[5].Value.ToString();
         }
 
         private void idBarang_SelectedIndexChanged(object sender, EventArgs e)

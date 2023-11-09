@@ -85,13 +85,14 @@ namespace sarpras_dimasr
         private void button2_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = koneksi.mysqlkoneksi();
-            MySqlCommand cmd = new MySqlCommand("insert into  barang_keluar values (@id, @nb, @jb, @date, @lks)", conn);
+            MySqlCommand cmd = new MySqlCommand("update barang_keluar set id_barang=@id, nama_barang=@nb, tgl_keluar=@date, jml_keluar=@jk, lokasi=@lks, penerima=@pn where id_bk=@idbk", conn);
+            cmd.Parameters.AddWithValue("@idbk", idbk.Text);
             cmd.Parameters.AddWithValue("@id", idBarang.Text);
             cmd.Parameters.AddWithValue("@nb", namaBarang.Text);
-            cmd.Parameters.AddWithValue("@date", tanggalKeluar.Value);
-            cmd.Parameters.AddWithValue("@jb", jumlahKeluar.Text);
+            cmd.Parameters.AddWithValue("@date", Convert.ToDateTime(tanggalKeluar.Value));
+            cmd.Parameters.AddWithValue("@jk", jumlahKeluar.Text);
             cmd.Parameters.AddWithValue("@lks", lokasi.Text);
-            cmd.Parameters.AddWithValue("@pn", penerima.Text);
+            cmd.Parameters.AddWithValue("@pn", penerima.Text); ;
             cmd.ExecuteNonQuery();
             MessageBox.Show("Data Barang berhasil Disimpan");
             tampildata();
@@ -132,7 +133,8 @@ namespace sarpras_dimasr
             tanggalKeluar.Value = Convert.ToDateTime(row.Cells[2].Value);
             lokasi.Text = row.Cells[4].Value.ToString();
             penerima.Text = row.Cells[5].Value.ToString();
-                    
+            idbk.Text = row.Cells[6].Value.ToString();
+
         }
 
         private void idBarang_SelectedIndexChanged(object sender, EventArgs e)
@@ -149,6 +151,22 @@ namespace sarpras_dimasr
                 namaBarang.Text = dt.Rows[0]["nama_barang"].ToString();
             }
             else { }
+        }
+
+        private void idbm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = koneksi.mysqlkoneksi();
+            MySqlCommand cmd = new MySqlCommand("delete from barang_keluar where id_bk=@idbk", conn);
+            cmd.Parameters.AddWithValue("@idbk", idbk.Text);
+           
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Data Barang berhasil Disimpan");
+            tampildata();
         }
     }
 }

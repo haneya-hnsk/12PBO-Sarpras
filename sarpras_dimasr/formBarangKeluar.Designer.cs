@@ -47,6 +47,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tc = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.idbk = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barang)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +84,7 @@
             this.button3.TabIndex = 54;
             this.button3.Text = "Hapus";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -233,11 +235,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cari";
             // 
+            // idbk
+            // 
+            this.idbk.AutoSize = true;
+            this.idbk.Location = new System.Drawing.Point(417, 438);
+            this.idbk.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.idbk.Name = "idbk";
+            this.idbk.Size = new System.Drawing.Size(82, 20);
+            this.idbk.TabIndex = 76;
+            this.idbk.Text = "ID Barang";
+            this.idbk.Click += new System.EventHandler(this.idbm_Click);
+            // 
             // formBarangKeluar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 425);
+            this.ClientSize = new System.Drawing.Size(1009, 528);
+            this.Controls.Add(this.idbk);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.penerima);
             this.Controls.Add(this.label6);
@@ -288,5 +302,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tc;
+        private System.Windows.Forms.Label idbk;
     }
 }
